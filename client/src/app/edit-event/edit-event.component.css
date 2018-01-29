@@ -1,0 +1,23 @@
+*:focus{
+    outline: none;
+    background-color: #ed9cd6;
+}
+
+body {
+    background: url(/assets/images/pexels-photo-139764.jpeg) no-repeat center center;
+    -webkit-background-attachment: fixed;
+    background-attachment: fixed;
+    background-size: cover;
+    padding: 0;
+    position: relative;
+    height: 100vh;
+}
+
+.container {
+    opacity: 0.9;
+    background-color: beige;
+    height: 300px;
+    border-radius: 10px;
+    border: 10px solid;
+    padding: 20px;
+}

@@ -1,0 +1,112 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/create']">
+            <strong style="font-size: 20px;">Events Dashboard</strong>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <button class="btn btn-danger" (click)="logout()">Log Out</button>
+  </nav>
+
+  <div class="container">
+    <h1>Welcome {{user?.first_name}} !</h1>
+    <div class="card border-info mb-3" style="max-width: 20rem;">
+      <div class="card-header text-info">
+        <h3 style="text-align: center;">Hoster:
+          <span style="color:bisque">{{event._host.first_name | uppercase}}</span>
+        </h3>
+      </div>
+      <div class="card-body text-info">
+        <h5 class="card-title">Date: {{event.date | date:'longDate'}}</h5>
+        <h5 class="card-title">Location: {{event._host.location}}</h5>
+        <h5 class="card-title">People who will join the event: {{event._join_user.length}}
+        </h5>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">
+            <i class="fa fa-user" aria-hidden="true"></i>Name</th>
+          <th scope="col">
+            <i class="fa fa-map-marker" aria-hidden="true"></i>
+            Location</th>
+          <th scope="col">State</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-success" *ngFor="let p of event._join_user">
+          <th scope="row">{{p.first_name}}</th>
+          <td>{{p.email}}</td>
+          <td>{{p.location}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="container">
+    <h2>
+      <i class="fa fa-comments" aria-hidden="true"></i> Discussion about this event:</h2>
+    <div class="form-group" *ngFor="let e of event._comment" id="scrollbar">
+      <h1>{{ e._message_poster.first_name }}</h1>
+      <h3>{{ e.content }}</h3>
+    </div>
+    <form (submit)="createComment()" #formData="ngForm">
+      <h3>Add Comment</h3>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-6">
+            <textarea class="form-control custom-control" rows="10" style="resize:none" name="content" [(ngModel)]="comments.content"
+              placeholder="Add a comment...." required minlength="3" #makeComment="ngModel"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="alert alert-danger" *ngIf="makeComment.invalid && (makeComment.dirty || makeComment.touched)">
+        <strong>
+          Please post something {{user?.first_name}} !!!
+        </strong>
+      </div>
+      <button class="btn btn-primary">
+        <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+        Submit Comments</button>
+    </form>
+  </div>
+
+  <!-- Footer Section -->
+  <footer id="myFooter">
+    <div class="social-networks">
+      <a href="#" class="twitter">
+        <i class="fa fa-twitter"></i>
+      </a>
+      <a href="#" class="facebook">
+        <i class="fa fa-facebook"></i>
+      </a>
+      <a href="#" class="google">
+        <i class="fa fa-github"></i>
+      </a>
+    </div>
+    <div class="footer-copyright">
+      <p>© 2017 Kevin Ke </p>
+    </div>
+  </footer>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
