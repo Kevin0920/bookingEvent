@@ -204,10 +204,10 @@ module.exports = {
     })
   },
 
-  join: function (req, res) {
+  joinEvent: function (req, res) {
     const event_id = req.params.event_id;
     const user_id = req.params.user_id;
-    console.log(event_id);
+    // console.log(event_id);
     Event.findOne({
       _id: event_id
     }, function (err, event) {
@@ -220,8 +220,9 @@ module.exports = {
           if (err) {
             console.log("b-e join user");
           } else {
-            console.log(user._id);
+            // console.log(user._id);
             event._join_user.push(user._id);
+            console.log(event._join_user);
             event.save(function (err) {
               if (err) {
                 console.log("can't save this event to user");

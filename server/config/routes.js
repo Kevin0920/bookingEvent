@@ -28,7 +28,7 @@ module.exports = function(app){
     })
 
     app.post('/join/:event_id/:user_id', (req, res, next) => {
-      mainroutes.join(req, res);
+      mainroutes.joinEvent(req, res);
     })
 
     app.post('/cancel/:event_id/:user_id', (req, res, next)=> {

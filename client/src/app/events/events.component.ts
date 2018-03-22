@@ -17,7 +17,7 @@ export class EventsComponent implements OnInit {
     last_name: "",
     email: "",
     date:"",
-    location:""
+    location:"",
   }
 
   events = {
@@ -29,7 +29,7 @@ export class EventsComponent implements OnInit {
 
   allEvents = [];
 
-  event;
+  event: string;
 
   constructor(private _service: MainService, private _router: Router, private _route: ActivatedRoute) { }
 

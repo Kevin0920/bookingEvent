@@ -55,7 +55,7 @@
               <button class="btn btn-info" *ngIf="e._host._id === user._id" [routerLink]="['/editEvent', e._id]">
                 Edit</button>
 
-              <button class="btn btn-outline-info" *ngIf="e._host._id !== user._id && e._join_user.includes(user._id)" (click)="cancel(e._id)">
+              <button class="btn btn-outline-info" *ngIf="e._host._id !== user._id && e._join_user.includes(userany._id)" (click)="cancel(e._id)">
                 <span>
                   Joining =>
                 </span>
@@ -98,7 +98,7 @@
               </button>
 
               <button class="btn btn-warning" *ngIf="a._host._id !== user._id && !a._join_user.includes(user._id)" (click)="joinEvent(a._id)">Join</button>
-
+              {{user._id | json}}
             </td>
           </tr>
         </tbody>
